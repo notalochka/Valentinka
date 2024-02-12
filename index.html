@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Valentinka</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image">
+        <img id="catImage" src="cat1_gif.gif" alt="cat" />
+      </div>
+      <div id="text" class="text">
+        <h1>Hi sweety!</h1>
+        <h1>Will you be my valentine?</h1>
+      </div>
+      <div class="buttons">
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+      </div>
+    </div>
+
+    <script>
+      const noButton = document.getElementById("noButton");
+      let isFirstClick = true;
+      const yesButton = document.getElementById("yesButton");
+
+      noButton.addEventListener("mouseover", () => {
+        if (!isFirstClick) {
+          const newX =
+            Math.random() * (window.innerWidth - noButton.offsetWidth);
+          const newY =
+            Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+          noButton.style.position = "absolute";
+          noButton.style.left = newX + "px";
+          noButton.style.top = newY + "px";
+        }
+      });
+
+      noButton.addEventListener("click", () => {
+        isFirstClick = false;
+
+        const newX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const newY =
+          Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+        noButton.style.position = "absolute";
+        noButton.style.left = newX + "px";
+        noButton.style.top = newY + "px";
+        document.getElementById("text").innerHTML =
+          "<h1>What are you thinking about?!</h1><h1>Are you tired of living?</h1>";
+        document.getElementById("catImage").src = "cat2.gif";
+      });
+
+      yesButton.addEventListener("click", () => {
+        document.getElementById("text").innerHTML = "<h1>LOVE YOU !!!</h1>";
+        document.getElementById("catImage").src = "cat5.gif";
+        yesButton.style.display = "none";
+        noButton.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
